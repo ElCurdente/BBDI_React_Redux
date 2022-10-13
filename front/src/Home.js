@@ -2,6 +2,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { set_number, play, set_dice } from './store/actions/actions-types';
 
+import GlobalStyles from './Styles/GlobalStyles';
+import Card from './Styles/Card';
+import Button from './Styles/Button';
+import HomeStyles from './Styles/HomeStyles';
+import Input from './Styles/Input';
+
 function Home() {
 
 
@@ -22,21 +28,23 @@ function Home() {
         const result_2 = Math.floor(Math.random() * 6) + 1;
         const result_3 = Math.floor(Math.random() * 6) + 1;
           dispatch(set_dice(result_1, result_2, result_3));
+          
       }
       console.log(dices);
     }
   }, [launch]);
 
   return (
+    <>
     <div className="App">
-      {/* <button onClick={() => dispatch(set_count())} > COUNT + 1 </button>
-      {messages.map((message, i) => <p key={i}>{message}</p>)}
-      <p>{count}</p>
-      <button onClick={() => dispatch(set_message(Math.random().toString()))} > ADD ALEA MESSAGE </button> */}
-      <input type="number" placeholder="Choisir le nombre de parties" onChange={(e) => dispatch(set_number(e.target.value))} />
-      <button onClick={() => dispatch(play())} > Lancer les dés </button>
-
+      {/* <HomeStyles /> */}
+      <Card >
+        <h1>Lancer une série</h1>
+        <Input type="number" placeholder="Choisir le nombre de parties" onChange={(e) => dispatch(set_number(e.target.value))} />
+        <Button onClick={() => dispatch(play())} > Lancer les dés </Button>
+      </Card>
     </div>
+    </>
   );
 }
 
