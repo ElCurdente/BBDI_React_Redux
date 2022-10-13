@@ -8,7 +8,7 @@ import Button from '../Styles/Button';
 import HomeStyles from '../Styles/HomeStyles';
 import Input from '../Styles/Input';
 
-  function Game() {
+function Game() {
 
   // lecture du store de la source de vérité read-only
   // const { messages } = useSelector(state => state.message);
@@ -52,22 +52,26 @@ import Input from '../Styles/Input';
         dispatch(set_total());
       }
       console.log(dices);
+      dispatch(play());
     }
   }, [launch]);
 
 
-    return (
+  return (
     <Card >
-          <h1>Lancer une série</h1>
-          <p>{win_types.yams}</p>
+      <h1>Lancer une série</h1>
+      {/* <p>{win_types.yams}</p>
           <p>{win_types.brelan}</p>
           <p>{win_types.petite_suite}</p>
           <p>{win_types.grande_suite}</p>
-          <h1>{total}</h1>
-          <Input type="number" placeholder="Choisir le nombre de parties" onChange={(e) => dispatch(set_number(e.target.value))} />
-          <Button onClick={() => dispatch(play())} > Lancer les dés </Button>
+          <h1>{total}</h1> */}
+      <div>
+        <label htmlFor="number">Choisir le nombre de parties :</label>
+        <Input type="number" onChange={(e) => dispatch(set_number(e.target.value))} />
+      </div>
+      <Button onClick={() => dispatch(play())} > Lancer les dés </Button>
     </Card>
-    );
+  );
 }
 
 export default Game;

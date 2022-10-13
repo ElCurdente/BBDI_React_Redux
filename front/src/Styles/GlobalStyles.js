@@ -8,8 +8,8 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
     }
     body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #2f2f2f;
+        font-family: 'gilroy', sans-serif;
+        background-color: #2A3656;
         color: #fff;
         display : flex;
         flex-direction : row;
