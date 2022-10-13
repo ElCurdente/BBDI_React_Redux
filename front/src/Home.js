@@ -1,23 +1,31 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { set_number, play } from './store/actions/actions-types';
+import { set_number, play, set_dice } from './store/actions/actions-types';
 
 function Home() {
 
-  debugger;
 
   // lecture du store de la source de vérité read-only
-  const { messages } = useSelector(state => state.message);
-  // const { number, launch, dices, win_types, result } = useSelector(state => state.y);
+  // const { messages } = useSelector(state => state.message);
+  const { number, launch, dices, win_types, result } = useSelector(state => state.yam);
 
 
 
   // actions dispatch dans le reducer => newState 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log('play lancé :' + launch);
-  // }, [launch]);
+  useEffect(() => {
+    console.log('play lancé :' + launch);
+    if (launch) {
+      for (let i = 0; i < number; i++) {
+        const result_1 = Math.floor(Math.random() * 6) + 1;
+        const result_2 = Math.floor(Math.random() * 6) + 1;
+        const result_3 = Math.floor(Math.random() * 6) + 1;
+          dispatch(set_dice(result_1, result_2, result_3));
+      }
+      console.log(dices);
+    }
+  }, [launch]);
 
   return (
     <div className="App">

@@ -1,4 +1,4 @@
-import {SET_NUMBER, PLAY} from '../constants/actions';
+import {SET_NUMBER, PLAY, SET_DICE} from '../constants/actions';
 
 const initialState = {
     number: 0,
@@ -31,6 +31,15 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 launch: !state.launch,
+            }
+        case SET_DICE:
+            return {
+                ...state,
+                dices : {
+                    dice_1 : action.payload_1,
+                    dice_2 : action.payload_2,
+                    dice_3 : action.payload_3,
+                }
             }
 
         default:

@@ -8,10 +8,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
 
 import message from './store/reducers/message';
+import yam from './store/reducers/yam';
 
 const store = configureStore({
   reducer: {
-    message
+    message,
+    yam
   }
 });
 
