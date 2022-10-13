@@ -1,6 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import Home from "./Home";
-import Statistiques from "./Statistiques";
+import Gains from "./components/Gains";
 
 import GlobalStyles from './Styles/GlobalStyles';
 import Sidebar from "./Styles/Sidebar";
@@ -36,7 +36,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route index path="/home" element={<Home />} />
-          <Route path="/statistiques" element={<Statistiques />} />
+          <Route path="/statistiques" element={<Gains />} />
           <Route path="*" element={<p>No match</p>} />
         </Routes>
       </AppWrapper>
