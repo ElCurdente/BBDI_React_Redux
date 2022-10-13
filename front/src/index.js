@@ -9,11 +9,12 @@ import { BrowserRouter } from "react-router-dom";
 
 import message from './store/reducers/message';
 import yam from './store/reducers/yam';
+import gains from './store/reducers/gains';
 
 const store = configureStore({
   reducer: {
-    message,
-    yam
+    yam,
+    gains
   }
 });
 

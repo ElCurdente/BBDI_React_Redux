@@ -1,4 +1,4 @@
-import { SET_NUMBER, PLAY, SET_DICE, SET_WIN_TYPE, SET_TOTAL } from '../constants/actions';
+import { SET_NUMBER, PLAY, SET_DICE, SET_WIN_TYPE, SET_TOTAL, RESET_CURRENT, SET_CURRENT } from '../constants/actions';
 
 const initialState = {
     number: 0,
@@ -18,7 +18,13 @@ const initialState = {
     result: {
         win: false,
         win_type: '',
-    }
+    },
+    current: {
+        yams: 0,
+        brelan: 0,
+        petite_suite: 0,
+        grande_suite: 0,
+    },
 }
 
 const reducer = (state = initialState, action = {}) => {
@@ -93,6 +99,29 @@ const reducer = (state = initialState, action = {}) => {
                 }
             }
 
+            case RESET_CURRENT:
+                return {
+                    ...state,
+                    current: {
+                        yams: 0,
+                        brelan: 0,
+                        petite_suite: 0,
+                        grande_suite: 0,
+                    }
+                }
+
+            case SET_CURRENT:
+
+            const wins = action.payload;
+            return {
+                ...state,
+                current: {
+                    yams: wins.yams,
+                    brelan: wins.brelan,
+                    petite_suite: wins.petite_suite,
+                    grande_suite: wins.grande_suite,
+            }
+        }
         default:
             return state;
     }

@@ -8,6 +8,7 @@ import Button from './Styles/Button';
 import HomeStyles from './Styles/HomeStyles';
 import Input from './Styles/Input';
 import Game from './components/Game';
+import Gains from './components/Gains';
 
 function Home() {
 
@@ -16,6 +17,7 @@ function Home() {
       <div className="App">
         {/* <HomeStyles /> */}
         <Game />
+        <Gains />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { set_number, play, set_dice, set_win_type, set_total } from '../store/actions/actions-types';
+import { set_number, play, set_dice, set_win_type, set_total, reset_current, set_current, yams, brelan, petite_suite, grande_suite } from '../store/actions/actions-types';
 
 import GlobalStyles from '../Styles/GlobalStyles';
 import Card from '../Styles/Card';
@@ -12,7 +12,7 @@ function Game() {
 
   // lecture du store de la source de vérité read-only
   // const { messages } = useSelector(state => state.message);
-  const { number, launch, total, dices, win_types, result } = useSelector(state => state.yam);
+  const { number, launch, total, dices, win_types, result, current } = useSelector(state => state.yam);
 
   const verif = ['666', '555', '444', '333', '222', '111', '123', '213', '231', '132', '312', '321', '456', '546', '564', '465', '645', '654'];
 
@@ -24,35 +24,49 @@ function Game() {
     console.log('play lancé :' + launch);
     if (launch) {
       console.log(number);
+      dispatch(reset_current());
+      const current_result = {
+        yams: 0,
+        brelan: 0,
+        petite_suite: 0,
+        grande_suite: 0,
+      }
+      console.log(current_result);
+        
       for (let i = 0; i < number; i++) {
         const result_1 = Math.floor(Math.random() * 6) + 1;
         const result_2 = Math.floor(Math.random() * 6) + 1;
         const result_3 = Math.floor(Math.random() * 6) + 1;
         const somme = result_1 + result_2 + result_3;
-
         dispatch(set_dice(result_1, result_2, result_3));
-        console.log(result_1 + '' + result_2 + '' + result_3);
-        console.log(verif.indexOf(result_1 + '' + result_2 + '' + result_3));
+
 
         if (verif.indexOf(result_1 + '' + result_2 + '' + result_3) !== -1) {
           if (result_1 === result_2 && result_1 === result_3 && result_1 === 6) {
-            console.log('yams');
             dispatch(set_win_type('yams'));
+            current_result.yams++;
           } else if (result_1 === result_2 && result_1 === result_3 && result_1 !== 6) {
-            console.log('brelan');
             dispatch(set_win_type('brelan'));
+            current_result.brelan++;
           } else if (result_1 !== result_2 && result_1 !== result_3 && result_2 !== result_3 && somme === 6) {
-            console.log('petite suite');
             dispatch(set_win_type('petite_suite'));
+            current_result.petite_suite++;
           } else if (result_1 !== result_2 && result_1 !== result_3 && result_2 !== result_3 && somme === 15) {
-            console.log('grande suite');
             dispatch(set_win_type('grande_suite'));
+            current_result.grande_suite++;
           }
         }
         dispatch(set_total());
       }
-      console.log(dices);
+      const total_wins = current_result.yams + current_result.brelan + current_result.petite_suite + current_result.grande_suite;
+      console.log(current_result);
+      dispatch(set_current(current_result));
+      dispatch(yams(current.yams));
+      dispatch(brelan(current.brelan));
+      dispatch(petite_suite(current.petite_suite));
+      dispatch(grande_suite(current.grande_suite));
       dispatch(play());
+
     }
   }, [launch]);
 
