@@ -1,4 +1,4 @@
-import { ADD_MESSAGE , SET_COUNT, SET_MESSAGE } from '../constants/actions';
+import { ADD_MESSAGE , SET_COUNT, SET_MESSAGE, SET_NUMBER, PLAY } from '../constants/actions';
 
 // on prépare de petites fonctions anonymes pour le dispatcher
 export const addMessage = payload => {
@@ -18,3 +18,15 @@ export const set_count = () => {
         type: SET_COUNT
     }
 };
+
+export const set_number = payload => {
+    return {
+        type: SET_NUMBER, payload: payload
+    }
+}
+
+export const play = () => {
+    return {
+        type: PLAY
+    }
+}
