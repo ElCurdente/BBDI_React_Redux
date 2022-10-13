@@ -4,3 +4,5 @@ export const SET_COUNT = 'SET_COUNT';
 export const SET_NUMBER = 'SET_NUMBER';
 export const PLAY = 'PLAY';
 export const SET_DICE = 'SET_DICE';
+export const SET_WIN_TYPE = 'SET_WIN_TYPE';
+export const SET_TOTAL = 'SET_TOTAL';
