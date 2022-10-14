@@ -18,16 +18,18 @@ function Gains() {
 
 
     return (
-        <Card>
-        <h1>Gains</h1>
-        <p>Yams : {current.yams}</p>
-        <p>Brelan : {current.brelan}</p>
-        <p>Petite suite : {current.petite_suite}</p>
-        <p>Grande suite : {current.grande_suite}</p>
-        <div>
-            <p>total : {total}</p>
-        </div>
-        </Card>
+        <>
+            <Card>
+                <h1>Gains</h1>
+                <p>Yams : {current.yams}</p>
+                <p>Brelan : {current.brelan}</p>
+                <p>Petite suite : {current.petite_suite}</p>
+                <p>Grande suite : {current.grande_suite}</p>
+                <div>
+                    <p>total : {total}</p>
+                </div>
+            </Card>
+        </>
     );
 }
 

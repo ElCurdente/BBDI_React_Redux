@@ -1,4 +1,5 @@
 import { Routes, Route, NavLink } from "react-router-dom";
+// import './App.css';
 import Home from "./Home";
 import Gains from "./components/Gains";
 
