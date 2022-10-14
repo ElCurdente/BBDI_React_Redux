@@ -66,7 +66,6 @@ function Game() {
       dispatch(petite_suite(current.petite_suite));
       dispatch(grande_suite(current.grande_suite));
       dispatch(play());
-
     }
   }, [launch]);
 
@@ -74,11 +73,6 @@ function Game() {
   return (
     <Card >
       <h1>Lancer une série</h1>
-      {/* <p>{win_types.yams}</p>
-          <p>{win_types.brelan}</p>
-          <p>{win_types.petite_suite}</p>
-          <p>{win_types.grande_suite}</p>
-          <h1>{total}</h1> */}
       <div>
         <label htmlFor="number">Choisir le nombre de parties :</label>
         <Input type="number" onChange={(e) => dispatch(set_number(e.target.value))} />

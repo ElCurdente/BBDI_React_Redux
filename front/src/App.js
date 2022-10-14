@@ -2,6 +2,7 @@ import { Routes, Route, NavLink } from "react-router-dom";
 import Home from "./Home";
 import Gains from "./components/Gains";
 
+import GlobalFonts from './font/font';
 import GlobalStyles from './Styles/GlobalStyles';
 import Sidebar from "./Styles/Sidebar";
 import AppWrapper from "./Styles/AppWrapper";
@@ -31,6 +32,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <GlobalFonts />
       <AppWrapper >
 
         <Navigation />
